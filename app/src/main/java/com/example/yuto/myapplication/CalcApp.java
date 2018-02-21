@@ -35,10 +35,13 @@ public class CalcApp extends AppCompatActivity  implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(this, SecondActivity.class);
-        Double v1 = Double.valueOf(EditText1.getText().toString());
-        Double v2 = Double.valueOf(EditText2.getText().toString());
-        Double answer = 0.0;
+        Double v1, v2, answer = 0.0;
+        try {v1 = Double.valueOf(EditText1.getText().toString());}
+        catch(java.lang.NumberFormatException e){v1 = 0.0;}
+        try {v2 = Double.valueOf(EditText2.getText().toString());}
+        catch(java.lang.NumberFormatException e){v2 = 0.0;}
 
+        
         if (view.getId() == R.id.button1) answer = v1 + v2;
         else if (view.getId() == R.id.button2) answer = v1 - v2;
         else if (view.getId() == R.id.button3) answer = v1 * v2;
